@@ -1,0 +1,18 @@
+<% flash.each do |_, msg| %>
+  <div style="color: #b00100" >
+    <%=msg %>
+  </div>
+<% end %>
+
+<%= form_for @note do |f| %>
+  <div>
+    <%=f.label 'Название' %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.rich_text_area :text %>
+  </div>
+  <div>
+    <%= f.submit 'Сохранить' %>
+  </div>
+<% end %>
