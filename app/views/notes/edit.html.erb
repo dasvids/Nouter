@@ -1,6 +1,8 @@
+<h1> <%= @note.title %> </h1>
+
 <%= render 'errors' %>
 
-<%= form_for @note, remote: true do |f| %>
+<%= form_for @note, method: :put, remote:true do |f| %>
   <div>
     <%=f.label 'Название' %>
     <%= f.text_field :title %>
@@ -9,6 +11,6 @@
     <%= f.rich_text_area :text %>
   </div>
   <div>
-    <%= f.submit 'Сохранить' %>
+    <%= f.submit 'Изменить' %>
   </div>
 <% end %>

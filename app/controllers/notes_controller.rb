@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show]
+  before_action :set_note, only: %i[show edit update destroy]
 
   def index
     @notes = Note.all
@@ -22,6 +22,23 @@ class NotesController < ApplicationController
     redirect_to note_path(note)
   end
 
+  def edit
+
+  end
+
+  def update
+    @note.update(note_update_params)
+    unless @note.valid?
+      return redirect_to edit_note_path(@note),
+                         alert: @note.errors.full_messages
+    end
+    redirect_to note_path(@note)
+  end
+
+  def destroy
+    @note.destroy
+    redirect_to feed_path
+  end
 
   private
 
@@ -30,6 +47,10 @@ class NotesController < ApplicationController
   end
 
   def note_params
+    params.require(:note).permit(:title, :text)
+  end
+
+  def note_update_params
     params.require(:note).permit(:title, :text)
   end
 
