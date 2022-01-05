@@ -3,6 +3,7 @@
   <%= @note.text %>
 </div>
 
-<%= link_to 'Редактировать', edit_note_url(@note) %>
-<%= link_to 'Удалить', note_url(@note), method: :delete,
-            data: {confirm: 'Точно'} %>
+<%if @current_user %>
+  <%= link_to 'Редактировать', edit_note_url(@note) %>
+  <%= link_to 'Удалить', note_url(@note), method: :delete, data: {confirm: 'Точно?'} %>
+<%end %>

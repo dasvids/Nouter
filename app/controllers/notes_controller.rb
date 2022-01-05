@@ -1,6 +1,9 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: %i[show edit update destroy]
 
+  attr_accessor :note
+  before_action :set_note, only: %i[show edit update destroy]
+  before_action :authorise_user, only: %i[new create edit update destroy]
+  before_action :authorise_note, only: %i[edit update destroy]
   def index
     @notes = Note.all
   end
@@ -10,11 +13,11 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note = Note.new
+    @note ||= Note.new
   end
 
   def create
-    note = Note.create note_params
+    @note = @current_user.notes.create(note_params)
     unless note.valid?
       return redirect_to new_note_path,
                          alert: note.errors.full_messages
@@ -41,6 +44,10 @@ class NotesController < ApplicationController
   end
 
   private
+
+  def authorise_note
+    not_found unless @note.user == @current_user
+  end
 
   def set_note
     @note = Note.find_by_id(params[:id])
