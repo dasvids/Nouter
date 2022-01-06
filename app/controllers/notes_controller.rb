@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
 
   attr_accessor :note
+
   before_action :set_note, only: %i[show edit update destroy]
   before_action :authorise_user, only: %i[new create edit update destroy]
   before_action :authorise_note, only: %i[edit update destroy]
@@ -13,7 +14,7 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note ||= Note.new
+    @note = Note.new
   end
 
   def create
