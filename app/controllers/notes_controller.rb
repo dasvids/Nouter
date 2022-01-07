@@ -3,7 +3,7 @@ class NotesController < ApplicationController
   attr_accessor :note, :notes
 
   before_action :set_note, only: %i[show edit update destroy]
-  before_action :authorise_user, only: %i[new create edit update destroy]
+  before_action :authorise_user, only: %i[new create edit update destroy show]
   before_action :authorise_note, only: %i[edit update destroy]
 
   def index
@@ -11,7 +11,7 @@ class NotesController < ApplicationController
   end
 
   def show
-    render_not_found unless @note
+    render_not_found unless @note && @note.id.equal?(@current_user.id)
   end
 
   def new
