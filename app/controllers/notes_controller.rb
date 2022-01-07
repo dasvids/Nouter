@@ -1,12 +1,13 @@
 class NotesController < ApplicationController
 
-  attr_accessor :note
+  attr_accessor :note, :notes
 
   before_action :set_note, only: %i[show edit update destroy]
   before_action :authorise_user, only: %i[new create edit update destroy]
   before_action :authorise_note, only: %i[edit update destroy]
+
   def index
-    @notes = Note.all
+    @notes ||= @current_user.notes.all unless @current_user.nil?
   end
 
   def show

@@ -1,0 +1,3 @@
+author:
+  email: 'author@example.com'
+  password_digest: <%= correct_password_digest %>

@@ -1,8 +1,10 @@
 <h1> Список заметок </h1>
 <ul>
-  <%- @notes.each do |note| %>
-    <li>
-      <%= link_to note.title, note_url(note) %>
-    </li>
-  <% end %>
+  <%- if @current_user %>
+    <%- @notes.each do |note| %>
+      <li>
+        <%= link_to note.title, note_url(note) %>
+      </li>
+    <% end %>
+  <%end %>
 </ul>
