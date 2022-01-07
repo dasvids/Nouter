@@ -6,11 +6,12 @@ class AuthController < ApplicationController
 
   def create
     @user = User.find_by_email(user_params[:email])
+    return redirect_to auth_path, alert: 'Wrong credentials' unless @user
     if @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
       redirect_to feed_path
     else
-      redirect_to :new, alert: @user.errors.full_messages.join
+      redirect_to auth_path, alert: @user.errors.full_messages.join
     end
   end
 
