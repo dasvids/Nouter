@@ -1,0 +1,42 @@
+<% if @user.errors.full_messages.any?  %>
+  <ul class="alert alert-danger">
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>>
+    <%end %>
+  </ul>
+<%end %>
+
+<%= form_with model: @user, remote: true do |f| %>
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-form-label">
+      <%= f.label :email %>
+    </div>
+
+    <div class="mb-3 row">
+      <%= f.email_field :email, class: 'form-control form-control-lg' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-form-label">
+      <%= f.label :password %>
+    </div>
+
+    <div class="mb-3 row">
+      <%= f.password_field :password, class: 'form-control form-control-lg' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-form-label">
+      <%= f.label :password_confirmation %>
+    </div>
+
+    <div class="mb-3 row">
+      <%= f.password_field :password_confirmation, class: 'form-control form-control-lg' %>
+    </div>
+  </div>
+
+  <%= f.submit "Resgistrate", class: 'btn btn-primary btn-lg' %>
+  <%= link_to  "Log in", auth_url, class: 'btn btn-primary btn-lg' %>
+<% end %>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Nouter</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -13,6 +14,14 @@
   <body>
     <%= render 'layouts/navbar' %>
     <% render 'layouts/errors' %>
-    <%= yield %>
+
+
+    <main class="container mt-3">
+      <% flash.each do |k ,v| %>
+        <% tag.div v, class: "alert alert-#{k}",role: 'alert' %>
+      <% end %>
+
+      <%= yield %>
+    </main>
   </body>
 </html>

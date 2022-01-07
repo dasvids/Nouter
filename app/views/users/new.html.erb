@@ -1,25 +1,4 @@
-<h1>
-  Регистрация
-</h1>
+<h1 class="mb-4"> Registration</h1>
 
-<%= form_for @user, remote: true do |f| %>
-  <div class="field">
-    <%=f.label 'Email' %>
-    <%= f.text_field :email, type: :email %>
-  </div>
-  <div class="field">
-  <%=f.label 'Пароль' %>
-  <%= f.text_field :password, type: :password %>
-  </div>
-  <div class="field">
-  <%=f.label 'Подтверждение пароля' %>
-  <%= f.text_field :password_confirmation, type: :password %>
-  </div>
+<%=render 'form' %>
 
-
-  <div class="field">
-    <%= f.submit 'Зарегестрироваться' %>
-  </div>
-<% end %>
-
-<%= link_to 'Войти', auth_url %>

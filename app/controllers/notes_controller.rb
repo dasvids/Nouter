@@ -24,7 +24,8 @@ class NotesController < ApplicationController
       return redirect_to new_note_path,
                          alert: note.errors.full_messages
     end
-    redirect_to note_path(note)
+    flash[:success] = "Note created"
+    redirect_to feed_path #note_path(note)
   end
 
   def edit

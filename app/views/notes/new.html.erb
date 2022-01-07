@@ -1,12 +1,2 @@
-<%= form_for @note, remote: true do |f| %>
-  <div>
-    <%=f.label 'Название' %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.rich_text_area :text %>
-  </div>
-  <div>
-    <%= f.submit 'Сохранить' %>
-  </div>
-<% end %>
+<h1 class="mb-4"><%= @note.title %></h1>
+<%= render 'form' %>

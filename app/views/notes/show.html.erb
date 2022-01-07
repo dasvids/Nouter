@@ -1,9 +1,10 @@
-<h1><%= @note.title %></h1>
-<div>
+<h1 class="mb-4"><%= @note.title %></h1>
+<p class="lead my-3">
   <%= @note.text %>
-</div>
+</p>
 
 <%if @current_user %>
-  <%= link_to 'Редактировать', edit_note_url(@note) %>
-  <%= link_to 'Удалить', note_url(@note), method: :delete, data: {confirm: 'Точно?'} %>
+  <%= link_to 'Back', feed_url, class: 'btn btn-secondary' %>
+  <%= link_to 'Edit', edit_note_url(@note), class: 'btn btn-secondary' %>
+  <%= link_to 'Delete', note_url(@note), method: :delete, class: 'btn btn-danger', data: {confirm: 'Точно?'} %>
 <%end %>

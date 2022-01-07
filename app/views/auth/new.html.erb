@@ -1,21 +1,25 @@
-<h1>
-  Вход
-</h1>
-
+<h1 class="mb-4">Login</h1>
 <%= form_for @user, url:  auth_url, remote: true do |f| %>
-  <div class="field">
-    <%=f.label 'Email' %>
-    <%= f.text_field :email, type: :email %>
-  </div>
-  <div class="field">
-    <%=f.label 'Пароль' %>
-    <%= f.text_field :password, type: :password %>
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-form-label">
+      <%= f.label :email %>
+    </div>
+
+    <div class="mb-3 row">
+      <%= f.email_field :email, class: 'form-control form-control-lg' %>
+    </div>
   </div>
 
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-form-label">
+      <%= f.label :password %>
+    </div>
 
-  <div class="field">
-    <%= f.submit 'Войти' %>
+    <div class="mb-3 row">
+      <%= f.password_field :password, class: 'form-control form-control-lg' %>
+    </div>
   </div>
+
+  <%= f.submit "Log in", class: 'btn btn-primary btn-lg' %>
+  <%= link_to  "Register", users_url, class: 'btn btn-primary btn-lg' %>
 <% end %>
-
-<%= link_to 'Зарегистрироваться', users_url %>

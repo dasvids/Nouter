@@ -1,10 +1,19 @@
-<h1> Список заметок </h1>
-<ul>
-  <%- if @current_user %>
-    <%- @notes.each do |note| %>
-      <li>
-        <%= link_to note.title, note_url(note) %>
-      </li>
-    <% end %>
-  <%end %>
-</ul>
+<h1 class="mb-lg-4">Notes</h1>
+<%- if @current_user %>
+  <% @notes.each do |note| %>
+    <article class="card">
+      <div class="card-body">
+        <h4><%= note.title %></h4>
+
+        <section class="card-text">
+          <p class="my-2">
+            <%= note.text %>
+          </p>
+
+        </section>
+
+        <%= link_to 'View', note_url(note), class: 'btn btn-primary' %>
+      </div>
+    </article>
+  <% end %>
+<%end %>
