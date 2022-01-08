@@ -11,21 +11,21 @@ class NotesController < ApplicationController
   end
 
   def show
-    render_not_found unless @note && @note.id.equal?(@current_user.id)
+    render_not_found unless @note.user_id == @current_user.id
   end
 
   def new
-    @note = Note.new
+    @note = @current_user.notes.new
   end
 
   def create
-    @note = @current_user.notes.create(note_params)
-    unless note.valid?
-      return redirect_to new_note_path,
-                         alert: note.errors.full_messages
+    @note = @current_user.notes.new note_params
+    if @note.save
+      flash[:success] = "Note created"
+      redirect_to notes_path
+    else
+      render :new
     end
-    flash[:success] = "Note created"
-    redirect_to feed_path #note_path(note)
   end
 
   def edit

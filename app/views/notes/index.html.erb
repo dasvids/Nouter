@@ -1,7 +1,11 @@
+<% provide :page_title, 'Notes' %>
+<% currently_at 'Notes' %>
+
 <h1 class="mb-lg-4">Notes</h1>
 <%- if @current_user %>
+  <%= nav_tab 'New note', new_note_url, class: 'btn btn-primary px-2 text-white' %>
   <% @notes.each do |note| %>
-    <article class="card">
+    <article class="card mt-3">
       <div class="card-body">
         <h4><%= note.title %></h4>
 

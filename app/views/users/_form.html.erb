@@ -1,10 +1,4 @@
-<% if @user.errors.full_messages.any?  %>
-  <ul class="alert alert-danger">
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>>
-    <%end %>
-  </ul>
-<%end %>
+<%= render 'shared/errors', object: @user %>
 
 <%= form_with model: @user, remote: true do |f| %>
   <div class="mb-3 row">

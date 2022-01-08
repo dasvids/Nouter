@@ -1,3 +1,4 @@
+<%= render 'shared/errors', object: @note %>
 <%= form_with model: @note,  remote:true do |f| %>
   <div  class="mb-3 row">
     <%= f.label :title, class: 'col_form-label' %>

@@ -1,16 +1,14 @@
 class UsersController < ApplicationController
-  #protect_from_forgery
   def new
     @user = User.new
   end
 
   def create
-    @user = User.create(user_params)
-    if @user.valid?
-      session[:user_id] = @user.id
+    @user = User.new user_params
+    if @user.save
       redirect_to feed_path
     else
-      redirect_to :new, alert: @user.errors.full_messages.join
+      redirect_to users_url
     end
   end
 

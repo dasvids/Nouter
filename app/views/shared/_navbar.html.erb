@@ -1,0 +1,20 @@
+<%= provide :navbar do %>
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <nav class="d-flex flex-wrap align-items-center justify-content-around justify-content-lg-start">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-around mb-md-0">
+          <li><%= nav_tab 'Home', feed_url,
+                          class: 'nav_link px-2 ', current_page: current_page %></li>
+          <li>
+            <% if @current_user  %>
+              <%= @current_user.email %>
+              <%=link_to 'Log out',auth_url, method: :delete, class: 'nav_link px-2 text-white' %>
+            <%-else %>
+              <%= link_to 'Log in', auth_url, class: 'nav_link px-2 text-white' %>
+            <%end %>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<%end %>
