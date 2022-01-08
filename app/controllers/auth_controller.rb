@@ -9,7 +9,7 @@ class AuthController < ApplicationController
     return redirect_to auth_path, alert: 'Wrong credentials' unless @user
     if @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
-      redirect_to feed_path
+      redirect_to root_path
     else
       redirect_to auth_path, alert: @user.errors.full_messages.join
     end
@@ -17,7 +17,7 @@ class AuthController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to feed_path
+    redirect_to root_path
   end
 
   private

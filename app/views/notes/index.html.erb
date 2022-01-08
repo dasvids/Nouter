@@ -3,21 +3,28 @@
 
 <h1 class="mb-lg-4">Notes</h1>
 <%- if @current_user %>
-  <%= nav_tab 'New note', new_note_url, class: 'btn btn-primary px-2 text-white' %>
-  <% @notes.each do |note| %>
-    <article class="card mt-3">
-      <div class="card-body">
-        <h4><%= note.title %></h4>
+  <%= link_to 'New note', new_note_url, class: 'btn btn-primary px-2 text-white' %>
+  <div class="wrapper_container p-4 border mt-4 ">
+    <div class="row gx-5" >
+      <% @notes.each do |note| %>
+        <div class="col ">
+           <article class="card " style="min-width: 250px; min-height: 250px;">
 
-        <section class="card-text">
-          <p class="my-2">
-            <%= note.text %>
-          </p>
+             <section class="card-header">
+               <h4><%= note.title %></h4>
+             </section>
 
-        </section>
-
-        <%= link_to 'View', note_url(note), class: 'btn btn-primary' %>
-      </div>
-    </article>
-  <% end %>
+             <div class="card-body">
+               <section class="card-text">
+                 <p class="my-2">
+                   <%= note.text %>
+                 </p>
+               </section>
+             </div>
+             <%= link_to 'View', note_url(note), class: 'btn btn-primary' %>
+           </article>
+        </div>
+    <% end %>
+    </div>
+  </div>
 <%end %>

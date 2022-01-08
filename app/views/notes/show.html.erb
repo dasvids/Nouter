@@ -1,10 +1,31 @@
-<h1 class="mb-4"><%= @note.title %></h1>
-<p class="lead my-3">
-  <%= @note.text %>
-</p>
+<% provide :page_title, "#{@note.title} view" %>
+<% currently_at 'View' %>
 
-<%if @current_user %>
-  <%= link_to 'Back', feed_url, class: 'btn btn-secondary' %>
-  <%= link_to 'Edit', edit_note_url(@note), class: 'btn btn-secondary' %>
-  <%= link_to 'Delete', note_url(@note), method: :delete, class: 'btn btn-danger', data: {confirm: 'Точно?'} %>
-<%end %>
+<h1 class="mb-4"></h1>
+
+<div class="container" style="max-width: max-content">
+  <article class="card ">
+    <section class="card-header">
+      <h4><%= @note.title %></h4>
+    </section>
+
+    <div class="card-body">
+      <section class="card-text">
+        <p class="my-2">
+          <%= @note.text %>
+        </p>
+      </section>
+    </div>
+
+
+    <div class="btn btn-group p-0">
+      <%if @current_user %>
+        <%= link_to 'Back', root_url, class: 'btn btn-secondary' %>
+        <%= link_to 'Edit', edit_note_url(@note), class: 'btn btn-success' %>
+        <%= link_to 'Delete', note_url(@note), method: :delete, class: 'btn btn-danger', data: {confirm: 'Точно?'} %>
+      <%end %>
+    </div>
+  </article>
+</div>
+
+

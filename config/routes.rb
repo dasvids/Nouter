@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/users', to: 'users#new'
   post '/users', to: 'users#create'
 
-  get '/feed', to: 'notes#index'
+  #get '/feed', to: 'notes#index'
 
   resources :notes
 end

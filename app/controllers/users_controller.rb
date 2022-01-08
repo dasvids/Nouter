@@ -6,9 +6,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
+      flash[:success] = "Welcome, #{@user.email} "
       redirect_to feed_path
     else
-      redirect_to users_url
+      render :new
     end
   end
 
