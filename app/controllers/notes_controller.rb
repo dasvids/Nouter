@@ -11,7 +11,7 @@ class NotesController < ApplicationController
   end
 
   def show
-    render_not_found unless @note.user_id == @current_user.id
+    render_not_found unless @note.present? && @note.user_id == @current_user.id
   end
 
   def new

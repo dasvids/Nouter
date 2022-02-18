@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   #get '/feed', to: 'notes#index'
 
-  resources :notes
+  resources :notes, :users
 end
