@@ -1,24 +1,9 @@
-# README
+# Nouter #
+## Nouter - это агрегатор для заметок для личного пользования, который позволяет записать нужную информацию и сохранить ее ##
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Реализованы данные функции:
++ Авторизация пользователя
++ Аунтефикация пользователя
++ Создание и удаление заметок
++ Возможность внести изменения в заметку
++ По средствам rich text добавление возможности Более сложного текста и не только
